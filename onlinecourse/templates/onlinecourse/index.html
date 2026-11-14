@@ -1,0 +1,9 @@
+{% extends 'onlinecourse/base.html' %}
+{% block title %}Courses · LearnSpace{% endblock %}
+{% block content %}<section class="hero mb-5"><span class="badge bg-light text-primary mb-3">Learning platform</span><h1 class="display-5 fw-bold">Build skills, one lesson at a time.</h1>
+<p class="lead opacity-75 mb-0">Explore a course, complete its lessons, and test your knowledge.</p></section>
+<h2 class="mb-4">Available courses</h2><div class="row g-4">
+{% for course in courses %}<div class="col-md-6"><div class="card p-4 h-100"><span class="pill align-self-start mb-3">COURSE</span>
+<h3>{{ course.name }}</h3><p class="text-secondary">{{ course.description|truncatewords:24 }}</p><div class="mt-auto">
+<a href="{% url 'onlinecourse:course_details' course.id %}" class="btn btn-primary mt-2">View course →</a></div></div></div>
+{% empty %}<p>No courses yet. Run <code>python manage.py seed_demo</code> to load a demonstration course.</p>{% endfor %}</div>{% endblock %}
